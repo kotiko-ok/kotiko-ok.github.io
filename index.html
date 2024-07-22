@@ -1000,7 +1000,9 @@
 		<script>
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 			tg.expand(); //расширяем на все окно
-			document.querySelector("#telegram-styles").innerHTML = `:root{
+			styleTg = document.querySelector("#telegram-styles")
+			console.log(styleTg,tg.ThemeParams.bg_color)
+			styleTg.innerHTML = `:root{
 			--tg-theme-bg-color:${tg.ThemeParams.bg_color}
 			--tg-theme-text-color:${tg.ThemeParams.text_color}
 			--tg-theme-hint-color:${tg.ThemeParams.hint_color}
