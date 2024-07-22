@@ -1041,12 +1041,12 @@
 				styleTg = document.querySelector("#telegram-styles")
 				console.log(styleTg, tg.ThemeParams)
 				styleTg.innerHTML = `:root{
-				--tg-theme-bg-color:{tg.ThemeParams.bg_color}
-				--tg-theme-text-color:{tg.ThemeParams.text_color}
-				--tg-theme-hint-color:{tg.ThemeParams.hint_color}
-				--tg-theme-link-color:{tg.ThemeParams.link_color}
-				--tg-theme-button-color:{tg.ThemeParams.button_color}
-				--tg-theme-button-text-color:{tg.ThemeParams.button_text_colorString}}`
+				--tg-theme-bg-color:${tg.ThemeParams.bg_color}
+				--tg-theme-text-color:${tg.ThemeParams.text_color}
+				--tg-theme-hint-color:${tg.ThemeParams.hint_color}
+				--tg-theme-link-color:${tg.ThemeParams.link_color}
+				--tg-theme-button-color:${tg.ThemeParams.button_color}
+				--tg-theme-button-text-color:${tg.ThemeParams.button_text_colorString}}`
 			// })
 		</script>
 </body>
