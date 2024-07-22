@@ -1,0 +1,782 @@
+
+:root{
+	--background-color-black:  #121212;
+	--color-white: #fff;
+	--color-blue: #52abf7;
+	--color-gray:  #9c9c9c;
+
+
+}
+
+body,
+.uid_spr_wrap_style {
+	background-color: var(--background-color-black) !important;
+	color: var(--color-white);
+}
+
+#main a,
+.main_content a,
+.calend_sub_hrefs,
+.eds_wraper a {
+	color: var(--color-blue);
+}
+
+.dialog_act_area .col-md-1 span,
+.creation_dialog_btn,
+.show_dialog_settings_btn,
+.dialog_members_show_act_btn,
+.custom_room_comment_send a,
+.user_event_history_item a,
+.calend_work_day,
+.reply-msg-action-btn,
+.forward-msg-action-btn,
+.remove-msg-action-btn,
+.mobileReturnToUmList {
+	color: var(--color-blue) !important;
+}
+
+.mobileReturnToUmList {
+	border-color: var(--color-blue) !important;
+}
+
+h1,
+h2:not(#user_page_rating_total),
+h3:not(.schedule_event),
+h4,
+h5,
+h6 {
+	color: var(--color-gray) !important;
+}
+
+label,
+strong,
+table th,
+.button.big,
+.post>header .meta .published,
+.um_user_list_block a,
+.dialogInfo a,
+.profile_actions_item_selected,
+.navbar-default .navbar-nav>li>a,
+.uvh-file-upload-form-collapser-btn,
+ul.tabs li,
+.main_content>.col-md-9.md-p-t>.col-md-3 a,
+.datepicker td,
+.datepicker th,
+#plantable td,
+.msgAttachContent,
+.profile_actions .profile_actions_item_selected,
+.pagination b,
+.pagination strong,
+.notify_content,
+.eds_menu_active_item a,
+a.cke_dialog_tab,
+.cke_dialog_title,
+select.cke_dialog_ui_input_select,
+select.cke_dialog_ui_input_select option,
+#useristyping,
+#useristyping span {
+	color: var(--color-white) !important;
+	text-shadow: none !important;
+}
+
+table,
+table thead th,
+select option,
+#header,
+#header .links,
+.post,
+#header .submenu_wraper ul li,
+.user_events_notificaton_history_content_loaded,
+.user_events_notificaton_history_corner,
+.user_session_actions_wrapper,
+.user_session_actions_corner,
+.main_content,
+.profile_data,
+.rating_content_wraper,
+.send_request_wrap,
+.default-audience-request-data,
+.audience_data_card,
+.audience_filter_wraper,
+.all_software_fixed_actions,
+.post_wrap_single,
+.post_comment_dyn_link,
+.dialogInfo,
+.dialog_members_params,
+.dialog_members_param_corner,
+.dialog_members_acts,
+.group_dialog_params_members_add,
+.user_card,
+.uvh_rp_content_wraper,
+.uvh-file-upload-form-collapser-btn,
+.plan_content_wraper,
+.add_trans_lesson_link,
+.search_for_dialog,
+#search_people_for_dialog,
+.dialog_settings,
+.dialog_settings_corner,
+.group_dialog_params,
+.group_dialog_param_corner,
+.fileuploader,
+.fileuploader-thumbnails-input-inner,
+.fileModalArea,
+.profile_section,
+.datepicker td,
+.datepicker td span,
+.datepicker th,
+.eds_module_wraper,
+.eds_menu_active_item,
+.eds_navigation li:hover,
+#task_params_edit_area,
+.umr_norms_panel,
+.umr_actions_panel,
+.calend_event_add,
+.uvh-video-item-upd-wrp,
+.window_modal_wraper,
+.schedule_footer,
+#edit_time_table_settings,
+.tree,
+.journal_top_panel,
+.journal_bottom_panel,
+.dynamic_calend_events,
+.autocompl_items,
+.msgAttachContent,
+#um_fileuploader_success_actions,
+.um_attached_screen,
+.um_attached_screen span,
+#vote_content,
+#karantine_content,
+.uplareabf,
+.uplarea,
+.user_notify_item,
+#insres,
+#rules_content,
+.journal_lesson_param_wrp,
+.elearning_content_wraper,
+.msg_box,
+.msg_box_profile_none,
+.scorestable.scorestable_clone_top td,
+.scorestable.scorestable_clone_left td,
+.scorestable.scorestable_clone_right tr:nth-child(1) td,
+.admission_main_nav,
+#anket_filter,
+.anketactions,
+.uid_spr_header,
+.fis_uid_spr_actions,
+.mobile_eds_menu,
+.mobile_task_params_icon,
+.cke_dialog_body,
+.cke_dialog_footer,
+a.cke_dialog_tab,
+.cke_dialog_title,
+.csm_d_content_wraper,
+.window_modal_close,
+.uvh_rp_modal_close,
+.plan_modal_close,
+.audience_filter_close,
+.rating_modal_close,
+.task_params_edit_close,
+.rules_close,
+.vote_close,
+.karantine_modal_close,
+.csm_d_modal_close,
+.fileModalClose,
+.elearning_modal_close,
+.moderation-statement-header,
+.moderation-statement-footer,
+.rp-selected-uvh-items-wrp,
+.admission-application-data .panel,
+.admission-application-data .panel-body,
+.admission-application-data .edu_params_sticky,
+.admission-application-data .tax_wrp,
+.admission-application-data .help_wrap,
+#ank_action_preloader_wrp,
+.admission-application-data #prevedures,
+#kladr_autocomplete,
+#kladr_autocomplete ul,
+#kladr_autocomplete ul li,
+.journal_save_scores_res_container,
+#manipulateAudienceForm #merge_audince_search_res,
+#schedule_group_event_search_group_res,
+#useristyping,
+#audience_data_load_wrp,
+#interest_list,
+.event_edit_area_wrap,
+.journal_save_res_all_data h3,
+.goog-tooltip > div,
+.eds_all_my_tasks_list,
+#council_voting_acts_modal .council_voting_acts_wrp,
+.council_voting_acts_close,
+#stat_detail_modal .stat_detail_content_wraper,
+.stat_detail_modal_close {
+	/*background-color: #424242 !important;*/
+	background-color: #272727 !important;
+}
+
+/*cause IE doesnt read rules with this property*/
+.journal_scores_wrp::-webkit-scrollbar-thumb {
+	background-color: #272727 !important;
+}
+
+.user_activity {
+	border-color: #272727 !important;
+}
+
+.calend_curr_pos,
+.btn-default,
+.schedule_stuff_tr_composed,
+.index_data_for_current_position {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: var(--color-white) !important;
+}
+
+table tr:hover,
+.teacherstufftable tr:hover,
+.cke_dialog_contents tr:hover {
+	background-color: #3a3a3a !important;	
+}
+
+.cke_dialog_contents tr,
+.highlighted,
+.navbar-default,
+.userpage_block_title,
+.tab-content,
+ul.tabs li.current,
+.fileuploader-theme-dragdrop .fileuploader-input,
+.fileuploader-theme-default .fileuploader-input,
+.eds_main_element,
+.eds_main_element_header,
+.settings_wrap,
+.task_people_elements_style,
+.task_file_uploader_link a,
+#umrform h1,
+.cke_inner,
+.tree_audience li span,
+#schedule_note_params_form .schedule_note_params_days label span,
+#schedule_note_params_form .schedule_note_params_lessons label span,
+#schedule_note_params_form .schedule_note_params_group label span,
+#schedule_note_params_form  #schedule_note_params_group_data label span,
+.audience_data_card_header,
+.in_msgs_action_list,
+.stuff_selected,
+.admission_main_nav_title,
+.moderation-col-header,
+.admission-application-data .panel-heading,
+a.cke_smile:hover,
+a.cke_smile:focus,
+a.cke_smile:active,
+a.cke_specialchar:hover,
+a.cke_specialchar:focus,
+a.cke_specialchar:active {
+	background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+input:not([type="submit"]),
+textarea,
+.form-control,
+.dropdown-menu,
+.autocoml_selected_item,
+.btn-default:hover #umrform h2,
+select.cke_dialog_ui_input_select {
+	background-color: rgba(255, 255, 255, 0.12) !important;
+	color: var(--color-white) !important;
+}
+
+.custom_room_comment_wrapper,
+.author_msg,
+.dialog_itm_active,
+.user_top_publications.not-shown,
+.user_event_history_item.not-shown,
+a.cke_dialog_tab_selected {
+	background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.dialog_act_area {
+	background-color: #333333 !important;	
+}
+
+input,
+textarea,
+select.cke_dialog_ui_input_select {
+	border: 1px solid;
+}
+
+input[disabled] {
+	background-color: rgb(0, 0, 0, 0.2) !important;
+}
+
+table td,
+table th,
+input:not([type="submit"]),
+textarea,
+hr,
+#header,
+.form-control,
+#header .submenu_wraper,
+#header .submenu_wraper li,
+.m_area,
+.cmm_wrap,
+.custom_room_comment_wrapper,
+#mes_val,
+.single_post_actions_wrp,
+.post.with-cover:after,
+.dialog_itm,
+.um_user_list_wrap,
+.dialog_itm_s,
+.search_for_dialog,
+.dialogInfo,
+.dialog_act_area,
+.s_mess,
+.s_mess blockquote,
+.dialog_members_params,
+.dialog_members_param_corner,
+.group_dialog_params_members_add,
+.group_dialog_params,
+.group_dialog_param_corner,
+.dialog_settings,
+.dialog_settings_corner,
+.um_global_search_txt,
+.user_event_history_item,
+.umr_norms_panel,
+.umr_actions_panel,
+.calend_event_add,
+.rating_content_wraper,
+#request_body,
+.audience_filter_wraper,
+.audience_data_card,
+.all_software_fixed_actions,
+.audience_data_card_header,
+.plan_content_wraper,
+.add_trans_lesson_link,
+.uvh_rp_content_wraper,
+.calend_wrap table td,
+.calend_wrap_index table td,
+.navbar-default,
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form,
+.profile_options .nav>li,
+.userpage_block_wrap,
+.userpage_block_title,
+.user_top_publications,
+.post_content,
+.window_modal_wraper,
+.tree,
+.audience_soft_client_wrp>.col-md-4,
+.tree_audience li span,
+#window_modal_content #schedule_notes_list_area>div:not(.alert),
+#window_modal_content #schedule_group_event_list_area>div:not(.alert),
+#window_modal_content ul.tabs li.current,
+.schedule_stuff_list_wraper,
+.journal_top_panel,
+.journal_bottom_panel,
+.autocompl_items,
+.msgAttachContent,
+.um_attached_screen,
+.uplareabf,
+.uplarea,
+.user_notify_item,
+#insres,
+.journal_lesson_param_wrp,
+.elearning_content_wraper,
+.msg_box,
+.msg_box_profile_none,
+.abit_data_table td,
+.abit_data_table th,
+.admission_employee_data,
+.admission_main_nav_items ul li,
+.admission_main_nav_title,
+.footwrp,
+.uid_spr_header,
+.fis_uid_spr_actions,
+a.cke_dialog_tab,
+.cke_dialog_contents,
+.cke_dialog_title,
+select.cke_dialog_ui_input_select,
+.moderation-col-wrp,
+.moderation-col-header,
+.moderation-department-item:not(:last-child),
+.moderation-group-item:not(:last-child),
+.csm_d_content_wraper,
+.moderation-statement-header,
+.moderation-statement-footer,
+.uvh-file-upload-form-collapser-wrp,
+.uvh-file-upload-form-collapser-btn,
+.rp-selected-uvh-items-wrp,
+.admission-application-data .panel-default,
+.admission-application-data .panel-heading,
+.admission-application-data .help_wrap,
+.admission-application-data #prevedures,
+#kladr_autocomplete,
+#kladr_autocomplete ul,
+#kladr_autocomplete ul li,
+.journal_save_scores_res_container,
+.task_comment_body,
+.task_file_uploader_link a,
+.task_people_elements_style,
+.autocoml_selected_item,
+.task_body_wraper,
+.eds_task_history_item,
+.task_body_log_itm,
+.btn-default,
+.user_session_actions_wrapper,
+.user_session_actions_corner,
+.journal_lesson_file_subj_wrp,
+.journal_lesson_file_subj_wrp .journal_lesson_file,
+a.cke_smile:hover,
+a.cke_smile:focus,
+a.cke_smile:active,
+a.cke_specialchar:hover,
+a.cke_specialchar:focus,
+a.cke_specialchar:active,
+#manipulateAudienceForm #merge_audince_search_res,
+#schedule_group_event_search_group_res,
+#interest_list,
+.event_edit_area_wrap,
+.fileuploader-item,
+.journal_save_res_all_data h3,
+#task_comments_load_more,
+.goog-tooltip > div,
+#council_voting_acts_modal .council_voting_acts_wrp,
+#stat_detail_modal .stat_detail_content_wraper,
+.reports_list,
+.comp-rep-menu li {
+	/*border-color: #696969 !important;*/
+	border-color: #4c4c4c !important;
+}
+
+.post ul.actions a.button {
+	background: rgb(39, 39, 39, 0.4) !important;
+}
+
+.post.with-cover:after {
+	background-image: linear-gradient(180deg, #272727 20%, rgb(65, 65, 65, 0.8));
+	background-image: -moz-linear-gradient(270deg, #272727 20%, rgb(65, 65, 65, 0.8));
+	background-image: -webkit-linear-gradient(270deg, #272727 20%, rgb(65, 65, 65, 0.8));
+}
+
+.alert strong {
+	color: inherit !important;
+}
+
+.fileuploader-theme-dragdrop .fileuploader-input,
+.fileuploader-theme-default .fileuploader-input,
+.fileuploader-theme-default .fileuploader-dragging,
+.fileuploader-input-caption {
+	border-color: #5c656f !important;
+}
+
+.btn-default:hover,
+#schedule_group_events_create_form #schedule_group_event_search_group_res .schedule_group_event_search_res_close span {
+	color: #d2d2d2 !important;
+}
+
+#umrform h2 {
+	background-color: #484848 !important;
+}
+
+.window_modal_close img,
+.uvh_rp_modal_close img,
+.plan_modal_close img,
+.audience_filter_close img,
+.rating_modal_close img,
+.task_params_edit_close img,
+.rules_close img,
+.vote_close img,
+.karantine_modal_close img,
+.csm_d_modal_close img,
+.fileModalClose img,
+.elearning_modal_close img,
+.council_voting_acts_close img,
+.stat_detail_modal_close img {
+	filter: invert(100%);
+}
+
+.journal_scores_wrp::-webkit-scrollbar-thumb,
+.journal_scores_wrp::-webkit-scrollbar-track,
+.journal_scores_wrp::-webkit-scrollbar-track:horizontal,
+.journal_scores_wrp::-webkit-scrollbar-track:vertical,
+.journal_scores_wrp::-webkit-scrollbar-corner {
+	border-color: #696969 !important;
+}
+
+.datepicker td.active,
+.datepicker td.day:hover,
+.datepicker td.active:hover {
+	background-color: #687ddb !important;
+}
+
+.datepicker:after,
+.datepicker:before {
+	display: none !important;
+}
+
+.ui-checkbox input,
+.ui-radio input {
+	left: .6em;
+}
+
+.ckf-ui-mode-desktop .ckf-folders-panel.ui-panel-closed.ckf-folders-panel-default {
+	margin-top: 44px;
+	border-top: 0;
+}
+
+.ckf-toolbar-visible .ckf-folders-panel .ui-panel-inner {
+	padding-top: 0 !important;
+	border-top: 0;
+}
+
+#schedule_note_params_form .schedule_note_params_days label span:hover,
+#schedule_note_params_form .schedule_note_params_lessons label span:hover,
+#schedule_note_params_form .schedule_note_params_group label span:hover,
+#schedule_note_params_form  #schedule_note_params_group_data label span:hover,
+#schedule_note_params_form .schedule_note_params_days label input:checked+span,
+#schedule_note_params_form .schedule_note_params_lessons label input:checked+span,
+#schedule_note_params_form .schedule_note_params_group label input:checked+span,
+#schedule_note_params_form #schedule_note_params_group_data label input:checked+span {
+	background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.tree_audience li>span:hover,
+.tree_audience li.parent_li>span:hover {
+	color: #828282 !important;
+}
+
+.time_table_item_validated-1,
+.time_table_item_validated-2,
+.time_table_item_validated-3 {
+	background: #495f69 !important;
+	border: 1px solid #7b8b94 !important;
+}
+
+.time_table_item-1,
+.time_table_item-2,
+.time_table_item-3 {
+	background: #545454 !important;
+	border: 1px solid #6f6f6f !important;
+}
+
+.item_noted {
+	background: #986161 !important;
+	border: 1px solid #b98585 !important;
+}
+
+.time_table_item_separator {
+	background: #9e9e9e !important;
+}
+
+.dialogInfoWrap {
+	border-top: 0 !important;
+}
+
+#portfolio_item_add_progress {
+	background: rgb(0, 0, 0, 0.7) !important;
+}
+
+.eds_main_header_info {
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.eds_task_main_info,
+.eds_task_people_and_groups_inner {
+	background: #2f2f2f !important;
+}
+
+.eds_main_element,
+.eds_main_element_header {
+	border: 0 !important;
+}
+
+.eds_main_element_header {
+	left: 0 !important;
+}
+
+.eds_main_filter_wrp {
+	background: #1b1b1b !important;
+}
+
+.eds_main_filter_wrp:before {
+	border-bottom-color: #1b1b1b !important;
+}
+
+.eds_task_main_info a.visited,
+.eds_all_my_tasks_list_table a.visited,
+.eds_all_my_tasks_list a.visited {
+	color: #ababab !important;
+}
+
+#chart svg > rect {
+	fill: transparent !important;
+}
+
+#chart text {
+	fill: #fff !important;
+}
+
+#chart g:last-child>path[fill="#ffffff"] {
+	fill: #272727 !important;
+}
+
+.journal_ltype_1 {
+	background: #4b7482 !important;
+}
+
+.journal_ltype_2 {
+	background: #687968 !important;
+}
+
+.journal_ltype_4 {
+	background: #a7866a !important;
+}
+
+.journal_ltype_5 {
+	background: #868290 !important;
+}
+
+.cke_top {
+	border-bottom: 0 !important;
+	background: rgb(255, 255, 255, 0.6) !important;
+	filter: invert(100%);
+}
+
+.cke_chrome {
+	border: 1px solid #4c4c4c !important;
+}
+
+.cke_bottom {
+	border-top: 1px solid #4c4c4c !important;
+	background: transparent !important;
+}
+
+a.cke_path_item,
+span.cke_path_empty {
+	color: var(--color-white) !important;	
+}
+
+.cke_reset {
+	background: #3c3b3b !important;
+}
+
+a.cke_dialog_close_button,
+.cke_dialog a.cke_btn_locked,
+.cke_dialog a.cke_btn_unlocked,
+.cke_dialog a.cke_btn_reset {
+	background-color: rgb(255, 255, 255) !important;
+}
+
+.cke_dialog .cke_dark_background {
+	background-color: rgb(0, 0, 0, 0.27) !important;
+}
+
+img[src="/files/upload/pages/image/32.gif"],
+img[src="/files/upload/images/sinchronize-512.png"] {
+	filter: invert(75%);
+}
+
+img[src="/files/upload/images/attach.png"] {
+	filter: invert(45%);
+}
+
+.msg_attach_info_img {
+	background-image: url(/files/upload/pages/image/30_dark.svg) !important;
+}
+
+.um-img-bg-loaded {
+	background-image: none !important;
+}
+
+.journal_scores_wrp {
+	-webkit-box-shadow: 0px 0px 20px 0px rgb(0, 0, 0) !important;
+	-moz-box-shadow: 0px 0px 20px 0px rgb(0, 0, 0) !important;
+	box-shadow: 0px 0px 20px 0px rgb(0, 0, 0) !important;
+}
+
+.admission_main_nav {
+	-webkit-box-shadow: 1px 0px 15px 0px rgb(0, 0, 0) !important;
+	-moz-box-shadow: 1px 0px 15px 0px rgb(0, 0, 0) !important;
+	box-shadow: 1px 0px 15px 0px rgb(0, 0, 0) !important;
+}
+
+#anket_filter {
+	-webkit-box-shadow: 0px 1px 15px 0px rgb(0, 0, 0) !important;
+	-moz-box-shadow: 0px 1px 15px 0px rgb(0, 0, 0) !important;
+	box-shadow: 0px 1px 15px 0px rgb(0, 0, 0) !important;
+}
+
+.anketactions {
+	-webkit-box-shadow: 0px -1px 15px 0px rgb(0, 0, 0) !important;
+	-moz-box-shadow: 0px -1px 15px 0px rgb(0, 0, 0) !important;
+	box-shadow: 0px -1px 15px 0px rgb(0, 0, 0) !important;
+}
+
+.edu_param_shadowed {
+	-webkit-box-shadow: 3px 4px 3px 1px rgb(0, 0, 0, 0.2) !important;
+	-moz-box-shadow: 3px 4px 3px 1px rgb(0, 0, 0, 0.2) !important;
+	box-shadow: 3px 4px 3px 1px rgb(0, 0, 0, 0.2) !important;
+}
+
+.task_file_uploader_link a {
+	-webkit-box-shadow: 0px 2px 5px 4px rgba(29, 29, 29, 0.2) !important;
+	-moz-box-shadow: 0px 2px 5px 4px rgba(29, 29, 29, 0.2) !important;
+	box-shadow: 0px 2px 5px 4px rgba(29, 29, 29, 0.2) !important;
+}
+
+.created_translation_item,
+.created_translation_item_new {
+	border-color: #6f6f6f !important;
+}
+
+/*bootstrap popover*/
+
+.popover {
+	background-color: #272727;
+	border-color: rgb(160, 160, 160, 0.3);
+	box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.4);
+	-moz-box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.4);
+	-webkit-box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.4);
+}
+
+.popover.top .arrow {
+	border-top-color: rgb(160, 160, 160, 0.6);
+}
+
+.popover.bottom .arrow {
+	border-bottom-color: rgb(160, 160, 160, 0.6);
+}
+
+.popover.left .arrow {
+	border-left-color: rgb(160, 160, 160, 0.6);
+}
+
+.popover.right .arrow {
+	border-right-color: rgb(160, 160, 160, 0.6);
+}
+
+.popover.top .arrow:after {
+	border-top-color: #272727;
+}
+
+.popover.bottom .arrow:after {
+	border-bottom-color: #272727;
+}
+
+.popover.left .arrow:after {
+	border-left-color: #272727;
+}
+
+.popover.right .arrow:after {
+	border-right-color: #272727;
+}
+
+/*end bootstrap popover*/
+
+@media screen and (max-width: 980px) {
+	.eds_menu_active_item {
+		background-color: rgba(255, 255, 255, 0.12) !important;
+	}
+	.eds_navigation_wraper,
+	.eds_task_people_and_groups,
+	.eds_task_people_and_groups_inner {
+		background-color: #272727 !important;
+	}
+}

@@ -1,0 +1,893 @@
+var $window = $(window),
+    $body = $('body'),
+    $menu = $('#menu'),
+    $sidebar = $('#sidebar'),
+    $main = $('#main'),
+    $userInfoB = $('#user_info_block_wrapper'),
+    $userInfoL = $('#user_right_info_and_actions'),
+    $userInfoAW = $('#user_right_info_and_actions_wrap'),
+    isMobile = false,
+    mainXHRLoadingError = '<div class="text-center"><strong>При загрузке данных произошла ошибка. Обновите страницу и попробуйте ещё раз.</strong></div>';
+
+// device detection
+function mainCheckMobileScreen() {
+    isMobile = $body.outerWidth() <= 980;
+}
+
+mainCheckMobileScreen();
+
+$(document).ready(function() {
+
+    skel.breakpoints({
+        xlarge: '(max-width: 1680px)',
+        large: '(max-width: 1280px)',
+        medium: '(max-width: 1180px)',
+        medium_s: '(max-width: 980px)',
+        small: '(max-width: 736px)',
+        xsmall: '(max-width: 480px)'
+    });
+
+    // Disable animations/transitions until the page has loaded.
+    $body.addClass('is-loading');
+
+    $window.on('load', function() {
+        window.setTimeout(function() {
+            $body.removeClass('is-loading');
+        }, 100);
+    });
+
+    // Fix: Placeholder polyfill.
+    $('form').placeholder();
+
+    // Prioritize "important" elements on medium.
+    skel.on('+medium -medium', function() {
+        $.prioritize(
+            '.important\\28 medium\\29',
+            skel.breakpoint('medium').active
+        );
+    });
+
+    // Menu.
+    $menu
+        .appendTo($body)
+        .panel({
+            delay: 500,
+            hideOnClick: true,
+            hideOnSwipe: true,
+            resetScroll: true,
+            resetForms: true,
+            side: 'right',
+            target: $body,
+            visibleClass: 'is-menu-visible'
+        });
+
+    // Search (header).
+    var $search = $('#search'),
+        $search_input = $search.find('input');
+
+    $body
+        .on('click', '[href="#search"]', function(event) {
+
+            event.preventDefault();
+
+            // Not visible?
+            if (!$search.hasClass('visible')) {
+
+                // Reset form.
+                $search[0].reset();
+
+                // Show.
+                $search.addClass('visible');
+
+                // Focus input.
+                $search_input.focus();
+
+            }
+
+        });
+
+    $search_input
+        .on('keydown', function(event) {
+
+            if (event.keyCode == 27)
+                $search_input.blur();
+
+        })
+        .on('blur', function() {
+            window.setTimeout(function() {
+                $search.removeClass('visible');
+            }, 100);
+        });
+
+    //skel.on('+medium_s', function() {
+            //$userInfoL.prependTo($userInfoB);
+        //})
+        //.on('-medium_s', function() {
+            //$userInfoL.prependTo($userInfoAW);
+        //});
+
+});
+
+function removeItemsStaticAttr() {
+
+    $('.post').find('img').each(function() {
+        if ($(this).css('float') == 'none')
+            $(this).removeAttr('width').css({
+                'width': ''
+            });
+
+        $(this).removeAttr('height').css({
+            'height': ''
+        });
+    });
+    $('.post').find('table').removeAttr('height').removeAttr('width').css({
+        'height': '',
+        'width': ''
+    });
+    $('.post').find('th').removeAttr('height').removeAttr('width').css({
+        'height': '',
+        'width': ''
+    });
+    $('.post').find('td').removeAttr('height').removeAttr('width').css({
+        'height': '',
+        'width': ''
+    });
+
+    $('.post_content_single').find('img').each(function() {
+        if ($(this).css('float') == 'none')
+            $(this).removeAttr('width').css({
+                'width': ''
+            });
+
+        $(this).removeAttr('height').css({
+            'height': ''
+        });
+    });
+    $('.post_content_single').find('table').removeAttr('height').removeAttr('width').css({
+        'height': '',
+        'width': ''
+    });
+    $('.post_content_single').find('th').removeAttr('height').removeAttr('width').css({
+        'height': '',
+        'width': ''
+    });
+    $('.post_content_single').find('td').removeAttr('height').removeAttr('width').css({
+        'height': '',
+        'width': ''
+    });
+
+    $('.post p').each(function() {
+        if ($(this).html().replace(/\s|&nbsp;/g, '').length == 0)
+            $(this).remove();
+    });
+
+    $('.post_content_single p').each(function() {
+        if ($(this).html().replace(/\s|&nbsp;/g, '').length == 0)
+            $(this).remove();
+    });
+
+}
+
+removeItemsStaticAttr();
+
+function getIndexCalendarEventsOnDate(cdate) {
+	
+    $.post("/kalendar", {
+        "cdate": cdate
+    }, function(data) {
+
+        var events = '<div class="index_events_title">События на: ' + cdate.toString().substr(6, 2) + '.' + cdate.toString().substr(4, 2) + '.' + cdate.toString().substr(0, 4) + '</div>';
+        var j = 0;
+
+        if (data != '') {
+            events += '<div class="overcalitm_wraper baron baron__root baron__clipper _macosx">';
+            events += '<div class="baron__scroller overcalitm">';
+            $.each(data, function() {
+                events += '<div class="dynamic_calend_events"><u>' + data[j]['event_start'] + ' - ' + data[j]['event_end'] + '</u><br/>' + data[j]['event_txt_html'] + '</div>';
+                j++;
+            });
+            events += '</div>';
+            events += '<div class="baron__track">';
+            events += '<div class="baron__control baron__up">▲</div>';
+            events += '<div class="baron__free">';
+            events += '<div class="baron__bar"></div>';
+            events += '</div>';
+            events += '<div class="baron__control baron__down">▼</div>';
+            events += '</div>';
+            events += '</div>';
+        } else {
+            events += 'Запланированных событий не найдено.';
+        }
+
+        $('#calend_events_for_curr_user').html(events);
+		
+        var index_cal_evt_h = Math.ceil($window.outerHeight() - $('.calend_inner_index').outerHeight() - $('#header').outerHeight() - $('.index_events_title').outerHeight()) - 65;
+		
+        $('.overcalitm_wraper, .overcalitm_wraper .overcalitm').css({'height': index_cal_evt_h, 'max-height': index_cal_evt_h});
+
+        initCustomScroll();
+
+    }, "json").fail(function(xhr, textStatus, thrownError, data) {
+        $('#calend_events_for_curr_user').html('<div class="dynamic_calend_events">' + translateXHRError(xhr, textStatus) + '</div>');
+    });
+
+    $('#day_' + cdate).addClass('index_data_for_current_position');
+}
+
+var index_page_items_limit = 10,
+    index_page_items_offset = 10,
+    index_page_items_p_loaded = 0,
+    index_page_items_load_next = true,
+    index_page_content_height = $('#hpage_latestnews').height(),
+    index_page_main_top_offset = 0;
+
+function showOnDate(cdate, dynamic) {
+	
+    dynamic = dynamic || 0;
+
+    if (!index_page_items_load_next && dynamic == 1) return false;
+
+    index_page_items_load_next = false;
+
+    index_page_items_p_loaded = 0;
+
+    $("td").removeClass('index_data_for_current_position');
+
+    if (dynamic == 0) {
+        $('#hpage_latestnews').html('<div class="text-center"><img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/></div>');
+        $('#calend_events_for_curr_user').html('<div class="text-center"><img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/></div>');
+        index_page_items_offset = index_page_items_limit;
+    } else {
+        $('#dynamic_posts_loading_error').remove();		
+        $('#hpage_latestnews').append('<div id="dynamic_posts_preloader" class="text-center"><img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/></div>');
+    }
+
+    $.post("/posts", {
+        "cdate": cdate,
+        'dynamic': dynamic,
+        'offset': index_page_items_offset,
+        'limit': index_page_items_limit
+    }, function(data) {
+        if (data != '') {
+            var i = 0,
+                res = '';
+            $.each(data, function() {
+                var likes_,
+                    dyn_p_puid = "'" + data[i]['puid'] + "'";
+
+                if (!data[i]['p_curr_like']) {
+                    likes_ = '<span onclick="likePost(' + data[i]['id'] + ', ' + dyn_p_puid + ', ' + data[i]['powner'] + ', 1)" data-toggle="body-tooltip" title="Понравилось" class="glyphicon glyphicon-heart-empty pull-left post_like_act" id="likePost_' + data[i]['id'] + '"></span>';
+                } else {
+                    likes_ = '<span onclick="likePost(' + data[i]['id'] + ', ' + dyn_p_puid + ', ' + data[i]['powner'] + ', 0)" data-toggle="body-tooltip" title="Вы отметили" class="glyphicon glyphicon-heart pull-left post_like_act" id="likePost_' + data[i]['id'] + '"></span>';
+                }
+
+                res += '<article class="post' + (data[i]['cover'] ? ' with-cover' : '') + '"' + (data[i]['cover'] ? ' style="background-image:url(\'' + data[i]['cover'] +'\');"' : '') + '>';
+                res += '<header>';
+				
+                if (data[i]['title'] && data[i]['title'].replace(/\s/gm, '') != '') {
+				
+                    res += '<div class="title">';
+                    res += '<h2>' + data[i]['title'] + '</h2>';
+                    res += '</div>';
+				
+                }
+				
+                res += '<div class="meta">';
+                res += '<time class="published">' + data[i]['date'] + ' в ' + data[i]['time'] + '</time>';
+                res += '<a target="_blank" href="/posts?userid=' + data[i]['powner'] + '&type=1" class="author"><span class="name">' + data[i]['aname'] + '</span><div style="background:url(' + data[i]['aavatar'] + ') no-repeat top left;"></div></a>'
+                res += '</div>';
+                res += '</header>';
+                res += '<span class="pre-line">' + data[i]['pcontent'] + '</span>';
+                res += '<div class="clearer"></div>';
+                res += '<footer>';
+                res += '<div class="fl_right">' + likes_ + '';
+                res += '<span class="post_act_counter" id="post_like_counter_' + data[i]['id'] + '">' + data[i]['p_likes'] + '</span>';
+                res += '<span data-toggle="body-tooltip" title="Комментарии" class="glyphicon glyphicon glyphicon-comment pull-left post_act_default"></span> <span class="post_act_counter">' + data[i]['num_comments'] + '</span>';
+                res += '<span data-toggle="body-tooltip" title="Уникальных просмотров" class="glyphicon glyphicon glyphicon-eye-open pull-left post_act_default"></span> <span class="post_act_counter">' + data[i]['p_views'] + '</span></div>';
+                res += '<ul class="actions">';
+                res += '<li><a target="_blank" href="/posts?action=show&amp;postid=' + data[i]['id'] + '" class="button big">Читать полностью</a></li>';
+                res += '</ul>';
+                res += '</footer>';
+                res += '</article>';
+
+                i++;
+                index_page_items_p_loaded++;
+            });
+
+            if (index_page_items_p_loaded == index_page_items_limit) {
+                index_page_items_offset = index_page_items_offset + index_page_items_limit;
+                index_page_items_load_next = true;
+            } else {
+                index_page_items_load_next = false;
+            }
+
+        } else {
+            if (dynamic == 0) {
+                $('#hpage_quicklinks').removeClass('is-sticky-leftside');
+                res = '<article class="post"><h3 style="margin-bottom:0;">На указанную дату ничего нет</h3></article>';
+            }
+        }
+
+        if (dynamic == 0) {
+            $('#hpage_latestnews').html(res);
+        } else {
+            $('#dynamic_posts_preloader').remove();
+            $('#hpage_latestnews').append(res);
+        }
+
+        if (data != '' && dynamic == 0) {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        }
+
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="body-tooltip"]').tooltip({
+            container: 'body'
+        });
+
+        removeItemsStaticAttr();
+
+    }, "json").fail(function(xhr, textStatus, thrownError, data) {
+        if (dynamic == 0) {
+            $('#hpage_latestnews').html('<article class="post">' + translateXHRError(xhr, textStatus) + '</article>');
+        } else {
+            $('#dynamic_posts_preloader').remove();
+            $('#hpage_latestnews').append('<article class="post" id="dynamic_posts_loading_error">' + translateXHRError(xhr, textStatus) + ' <a href="javascript:void(0)" onclick="index_page_items_load_next = true; showOnDate(&apos;&apos;, 1);">Повторить</a></article>');
+        }
+    });
+
+    if (dynamic == 0) {
+        getIndexCalendarEventsOnDate(cdate);
+    }
+}
+
+function calendRender(ondate, fn) {
+	
+    fn = fn || null;
+	
+    $('#dynamiccalend').html('<img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/>');
+	
+    $.post("/dynamiccalend", {
+        "ondate": ondate
+    }, function(data) {
+		
+        if (data != '') {
+            $('#dynamiccalend').html(data);
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+		
+        if (fn && typeof fn == 'function') fn('ok');
+		
+    }).fail(function(xhr, textStatus, thrownError, data) {
+        $('#dynamiccalend').html('<div class="dynamic_calend_events">' + translateXHRError(xhr, textStatus) + ' <a href="javascript:void(0)" onclick="initIndexCalendar(\'' + ondate + '\')">Повторить</a></div>');
+    });
+	
+    $('#calendyear').html(ondate.toString().substr(0, 4));
+}
+
+function initIndexCalendar(on_date) {
+	
+    on_date = on_date || null;
+	
+    if (curr_segment != '') return false;
+	
+    index_page_main_top_offset = $('#intro').outerHeight() + (($('#wrapper').outerHeight() - $('#wrapper').height()) / 2) + ($('section.blurb').outerHeight() - $('section.blurb').height());
+	
+    $('#hpage_quicklinks').css('width', function() {
+        return $(this).parents('.blurb').width();
+    });
+
+    if ($('#dynamiccalend table').length > 0) {
+		
+        var index_cal_evt_h = Math.ceil($window.outerHeight() - $('.calend_inner_index').outerHeight() - $('#header').outerHeight() - $('.index_events_title').outerHeight()) - 65;
+		
+        $('.overcalitm_wraper, .overcalitm_wraper .overcalitm').css({'height': index_cal_evt_h, 'max-height': index_cal_evt_h});
+		
+        return false;
+    }
+
+    var main_curr_date = on_date ? on_date : new Date().toISOString().slice(0, 10).replace(/-/g, '');
+
+    calendRender(main_curr_date, function(render) {
+        if (render == 'ok') getIndexCalendarEventsOnDate(main_curr_date);
+    });
+    
+}
+
+$(document).ready(function() {
+
+    var main_current_scroll = 0;
+
+    if (curr_segment == '') {
+
+        if (!isMobile) setTimeout(initIndexCalendar, 100);
+
+        $window.scroll(function() {
+
+            main_current_scroll = $window.scrollTop();
+            index_page_content_height = $('#hpage_latestnews').height();
+
+            if (main_current_scroll >= index_page_content_height - $('#header').height() - 1500) {
+                showOnDate('', 1);
+            }
+
+            if (main_current_scroll > index_page_main_top_offset && index_page_content_height > (index_page_main_top_offset + $('section.blurb').outerHeight())) {
+				
+                if (main_current_scroll > $('body').get(0).scrollHeight - ($('#footer').outerHeight() + $('#hpage_quicklinks').outerHeight() + 136)) {
+                    $('#hpage_quicklinks').addClass('is-absolute-leftside').removeClass('is-sticky-leftside');
+                } else {
+                    $('#hpage_quicklinks').addClass('is-sticky-leftside').removeClass('is-absolute-leftside');
+                }
+
+            } else {
+                $('#hpage_quicklinks').removeClass('is-sticky-leftside').removeClass('is-absolute-leftside');
+            }
+        });
+
+    }
+
+    if (curr_segment == 'user') {
+
+        $window.scroll(function() {
+
+            main_current_scroll = $window.scrollTop();
+
+            if (main_current_scroll > ($('.main_content').outerHeight() - $('.main_content').height()) / 2 + ($('body').outerHeight() - $('body').height()) + $('.profile_actions').outerHeight() - 8) {
+				
+                if (main_current_scroll > $('body').get(0).scrollHeight - ($('#footer').outerHeight() + $('#user_right_info_and_actions_wrap > div').outerHeight() + 136)) {
+                    $userInfoL.addClass('is-absolute-rightside-ui').removeClass('is-sticky-rightside-ui');
+                } else {
+                    $userInfoL.addClass('is-sticky-rightside-ui').removeClass('is-absolute-rightside-ui');
+                }
+				
+            } else {
+                $userInfoL.removeClass('is-sticky-rightside-ui').removeClass('is-absolute-rightside-ui');
+            }
+        });
+    }
+
+});
+
+function initCheckUserInSystem() {
+    $('.user_activity').unbind('mouseover');
+    $('.user_activity').mouseover(
+        function() {
+            var activity_object = $(this);
+            $.post("/user_activity_request", {
+                "uid_activity": activity_object.attr('data-user-id')
+            }, function(data) {
+                activity_object.attr('data-original-title', data.activity_date);
+                $('.tooltip-inner').text(data.activity_date);
+                $('[data-user-activity-text="' + activity_object.attr('data-user-id') + '"]').text(data.activity_date);
+                if (data.online == 1) {
+                    activity_object.removeClass('offline').addClass('online');
+                } else {
+                    activity_object.removeClass('online').addClass('offline');
+                }
+            }, 'json');
+        }
+    );
+}
+
+initCheckUserInSystem();
+
+function flushSubMenuAttrs() {
+
+    $('#header .links').removeAttr('style');
+
+    $('.submenu_wraper .submenu_items').css({
+        'width': '',
+        'min-width': '',
+        'max-width': ''
+    });
+}
+
+function dynamicChangeMenuItems() {
+
+    $('.addition_nav').remove();
+
+    var menu = $('#header .links > ul'),
+        menuAreaWidth = $('#header .links').width() - 100,
+        menuItemsWidth = 0,
+        menuItemMaxWidth = 0,
+        additionMenuCheck = false,
+        additionMenuHtml = '<ul class="fl_left addition_nav"><li><a onclick="showHideSubMenu(this)" href="javascript:void(0)">Ещё</a><span onclick="showHideSubMenu(this)" class="glyphicon glyphicon-chevron-right"></span><div class="submenu_wraper baron baron__root baron__clipper _macosx"><div class="baron__scroller submenu_items"><ul>';
+
+    menu.children('li').each(function() {
+
+        menuItemsWidth += $(this).outerWidth();
+
+        if (menuItemsWidth > menuAreaWidth) {
+            if ($(this).find('ul').length == 0) {
+                additionMenuHtml += '<li>' + $(this).html() + '</li>';
+            } else {
+                additionMenuHtml += $(this).find('ul').eq(0).html();
+            }
+            $(this).hide();
+            additionMenuCheck = true;
+        } else {
+            $(this).show();
+        }
+    });
+
+    if (additionMenuCheck) {
+
+        additionMenuHtml += '</ul></div>';
+        additionMenuHtml += '<div class="baron__track">';
+        additionMenuHtml += '<div class="baron__control baron__up">▲</div>';
+        additionMenuHtml += '<div class="baron__free">';
+        additionMenuHtml += '<div class="baron__bar"></div>';
+        additionMenuHtml += '</div>';
+        additionMenuHtml += '<div class="baron__control baron__down">▼</div>';
+        additionMenuHtml += '</div>';
+        additionMenuHtml += '</div></li></ul>';
+
+        $('#header .links').append(additionMenuHtml);
+
+        menuItemMaxWidth = Math.max.apply(Math, $('.addition_nav ul li').map(function() {
+            return $(this).outerWidth();
+        }).get());
+
+        $('.addition_nav .submenu_wraper').css('max-width', (menuItemMaxWidth > 480 ? 480 : menuItemMaxWidth));
+		
+        initCustomScroll();
+		
+    }
+
+}
+
+// twice call to prevent flicking effect and incorrect calculation
+if (!isMobile) dynamicChangeMenuItems();
+
+$(document).ready(function() {
+    if (!isMobile) {
+        dynamicChangeMenuItems();
+    }
+});
+
+function showHideMenu() {
+    var menuObj = $('#header .links');
+    if (!menuObj.css('display') || menuObj.css('display') == 'none') {
+        menuObj.fadeIn();
+        $('body').css('overflow', 'hidden');
+    } else {
+        menuObj.fadeOut();
+        $('body').css('overflow', '');
+    }
+}
+
+function showHideSubMenu(item) {
+    var par = $(item).parent(),
+        to_display = par.find('.submenu_wraper');
+    if (!$(to_display).css('display') || $(to_display).css('display') == 'none') {
+        $(to_display).show(300);
+    } else {
+        $(to_display).hide(300);
+    }
+}
+
+function showHideUserSessionActions(ct) {
+    var aObj = $('#user_session_actions_wrapper');
+    if (ct.nodeName == 'DIV' || ct.nodeName == 'SPAN') {
+        if (!aObj.css('display') || aObj.css('display') == 'none') {
+            aObj.fadeIn().focus();
+        } else {
+            aObj.fadeOut();
+        }
+    }
+}
+
+function logIn() {
+    $('#main_login_link').hide();
+    $('#logInError').hide();
+    $('#main_login_process_loading').show();
+    $.post("/auth", $('#loginForm').serialize(), function(data) {
+        if (data.success) {
+            window.location.reload();
+        } else {
+            $('#logInError').show().text(data.error);
+            $('#main_login_process_loading').hide();
+            $('#main_login_link').show();
+        }
+    }, 'json').fail(function(xhr, textStatus, thrownError, data) {
+        $('#logInError').show().text(translateXHRError(xhr, textStatus));
+        $('#main_login_process_loading').hide();
+        $('#main_login_link').show();
+    });
+}
+
+function checkLoginSubmit(event) {
+    if (event.keyCode == 13) {
+        logIn();
+    }
+}
+
+function collapseProfileMenu(mitm) {
+    var par = $(mitm).parent(),
+        to_display = par.find('div');
+    if (!$(to_display).css('display') || $(to_display).css('display') == 'none') {
+        $(to_display).show(300);
+        $(to_display).css({
+            'visibility': 'visible',
+            'border-top': 0
+        });
+        $(par).find('.profile_menu_collapseble_text').hide();
+    } else {
+        $(to_display).hide(300);
+        $(to_display).css('visibility', 'hidden');
+        $(par).find('.profile_menu_collapseble_text').show();
+    }
+}
+
+function OpenRating(uid, yin, detail) {
+    detail = detail || 0;
+    $('#rating_modal').show();
+    $body.css('overflow', 'hidden');
+    $('#rating_content').html('<div class="text-center"><img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/></div>');
+
+    $.post("/get_user_rating", {
+        "rating_user": uid,
+        'detail': detail,
+        'yin': yin
+    }, function(data) {
+        $('#rating_content').html(data);
+        $('[data-toggle="tooltip"]').tooltip();
+    }).fail(function(xhr, textStatus, thrownError, data) {
+        $('#rating_content').html(translateXHRError(xhr, textStatus));
+    });
+}
+
+function OpenRatingTutor(uid) {
+    $('#rating_modal').show();
+    $body.css('overflow', 'hidden');
+    $('#rating_content').html('<div class="text-center"><img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/></div>');
+
+    $.post("/get_tutor_rating", {
+        "rating_user": uid
+    }, function(data) {
+        $('#rating_content').html(data);
+        $('[data-toggle="tooltip"]').tooltip();
+    }).fail(function(xhr, textStatus, thrownError, data) {
+        $('#rating_content').html(translateXHRError(xhr, textStatus));
+    });
+}
+
+function CloseRating() {
+    $('#rating_modal').hide();
+    $body.css('overflow', '');
+}
+
+function getRatingDetail(uid, cs, rt, ef, hobj) {
+
+    var detail_html = '',
+        i = 0;
+
+    $('#rating_modal').animate({
+        scrollTop: $('#user_rating_table').height() + 225
+    }, 700);
+
+    $('#user_rating_detail').html('<div class="text-center"><img src="/files/upload/pages/image/32.gif" alt="Загрузка..." title=""/></div>');
+
+    $.post('/list_rating', {
+        'r_detail': uid,
+        'r_type': rt,
+        'cs': cs,
+        'ef': ef
+    }, function(data) {
+        if (data != '') {
+
+            detail_html = '<h3>' + $(hobj).text() + '</h3>';
+
+            if (rt > 0) {
+                detail_html += '<table><tr><td>Тип</td><td>Наименование</td><td>Файл</td></tr>';
+            } else {
+                detail_html += '<table><tr><td>Семестр</td><td>Дисциплина</td><td>Форма контроля</td><td>Оценка</td></tr>';
+            }
+
+            $.each(data, function() {
+                if (rt > 0) {
+                    var file_exst = 'Отсутствует';
+                    if (data[i]['filehash']) {
+                        file_exst = '<a target="_blank" href="/files/upload/portfolio/' + uid + '/' + data[i]['filehash'] + '">' + data[i]['filetitle'] + '</a>';
+                    }
+                    detail_html += '<tr><td>' + data[i]['type'] + '</td><td>' + data[i]['title'] + '</td><td>' + file_exst + '</td></tr>';
+                } else {
+                    detail_html += '<tr><td>' + data[i]['sem'] + '</td><td>' + data[i]['subj'] + '</td><td>' + data[i]['markt'] + '</td><td>' + data[i]['mark'] + '</td></tr>';
+                }
+                i++;
+            });
+
+            detail_html += '</table>';
+
+        }
+
+        $('#user_rating_detail').html(detail_html);
+        $('#rating_modal').animate({
+            scrollTop: $('#user_rating_table').height() + 225
+        }, 700);
+
+    }, 'json').fail(function(xhr, textStatus, thrownError, data) {
+        $('#user_rating_detail').html(translateXHRError(xhr, textStatus));
+    });
+}
+
+var uid_to_request = 0;
+
+function startSendRequestForStudent(uid, hobj) {
+    var request_wrap = $('#send_request');
+    uid_to_request = uid;
+    if (request_wrap.css('display') == 'block') {
+        $(hobj).text('Написать');
+        request_wrap.hide();
+        $('#send_request_result').html('');
+        $('#request_sender_data').val('');
+        $('#request_body').html('');
+        grecaptcha.reset();
+        $('#user_rating_table').fadeIn();
+    } else {
+        $(hobj).text('Отменить');
+        request_wrap.fadeIn();
+        $('#user_rating_table').hide();
+        $('#user_rating_detail').html('');
+    }
+}
+
+function sendRequestFromRating() {
+    var req_body = $('#request_body').html(),
+        req_fields = $('#request_from_rate_form').serialize(),
+        total_requests = parseInt($('#requests_total').text());
+
+    $('#send_request_from_rating_send').hide();
+    $('#send_request_from_rating_progress').show();
+
+    $.post('/list_rating', {
+        'request_fields': req_fields,
+        'request_body': req_body,
+        'uid_to_request': uid_to_request
+    }, function(data) {
+
+        if (data.result == 'ok') {
+            $('#send_request_result').html('<div class="alert alert-success">Ваш отклик успешно отправлен и зарегистрирован</div>');
+            $('#requests_total').text(total_requests + 1);
+            $('#request_from_rate_form')[0].reset();
+            $('#request_body').html('');
+        } else {
+            $('#send_request_result').html('<div class="alert alert-danger">' + data.result + '</div>');
+        }
+
+        grecaptcha.reset();
+        $('#send_request_from_rating_send').show();
+        $('#send_request_from_rating_progress').hide();
+
+    }, 'json').fail(function(xhr, textStatus, thrownError, data) {
+        $('#send_request_result').html('<div class="alert alert-danger">' + translateXHRError(xhr, textStatus) + '</div>');
+        $('#send_request_from_rating_send').show();
+        $('#send_request_from_rating_progress').hide();
+    });
+}
+
+function userEventsHistoryWraperResize() {
+
+    var uenhcl = $('#user_events_notificaton_history_content_loaded_data'),
+        shh = $('#header').outerHeight(),
+        bh = $window.outerHeight(),
+        mah = $('.user_events_notification_mark_all').css('display') == 'flex' ? $('.user_events_notification_mark_all').outerHeight() : 0,
+        res = isMobile ? (bh - shh - mah) : '';
+
+    uenhcl.css('max-height', res);
+}
+
+if (isMobile) {
+    userEventsHistoryWraperResize();
+}
+
+function switchMainThemeMode() {
+
+    if (getCookie('ies-theme-mode') == 'dark') {
+        setCookie('ies-theme-mode', '', -1);
+        $('body').removeClass('dark-mode').addClass('light-mode');
+        $('#dark-theme-css').remove();
+    } else {
+        setCookie('ies-theme-mode', 'dark', 1000);
+        $('body').removeClass('light-mode').addClass('dark-mode');
+        $('head').append('<link id="dark-theme-css" rel="stylesheet" href="/files/upload/tpl/css/dark-mode.css" />');
+    }
+
+}
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+$window.resize(function() {
+
+    mainCheckMobileScreen();
+    userEventsHistoryWraperResize();
+    flushSubMenuAttrs();
+    dynamicChangeMenuItems();
+    initIndexCalendar();
+    initCustomScroll();
+
+});
+
+$(document).on('mousedown', function(e) {
+    if (!$(e.target).parents('nav.main').length) {
+        if (!$(e.target).parents('#user_session_actions_wrapper').length) {
+            $('#user_session_actions_wrapper').fadeOut();
+        }
+    }
+});
+
+//check background images rendering
+
+(function($) {
+
+    $.fn.bgLoaded = function(custom) {
+
+        var self = this;
+
+        var defaults = {
+            afterLoaded: function() {
+                this.addClass('bg-loaded');
+            }
+        };
+
+        var settings = $.extend({}, defaults, custom);
+
+        self.each(function() {
+            var $this = $(this),
+                bgImgs = $this.css('background-image').split(', ');
+            $this.data('loaded-count', 0);
+
+            $.each(bgImgs, function(key, value) {
+                var img = value.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                $('<img/>').attr('src', img).on('load', function() {
+                    $(this).remove();
+                    $this.data('loaded-count', $this.data('loaded-count') + 1);
+                    if ($this.data('loaded-count') >= bgImgs.length) {
+                        settings.afterLoaded.call($this);
+                    }
+                });
+            });
+
+        });
+    };
+
+})(jQuery);
+
+// privacy policy acts
+
+var app_privacy_policy_shown = localStorage.getItem('appPrivacyPolicyShown');
+
+if (!app_privacy_policy_shown) {
+    $('.app_privacy_policy_container').show();
+}
+
+function hideAppPrivacyPolicy() {
+    localStorage.setItem('appPrivacyPolicyShown', true);
+    $('.app_privacy_policy_container').hide();
+}
+
+$('[data-toggle="tooltip"]').tooltip();
+$('[data-toggle="body-tooltip"]').tooltip({
+    container: 'body'
+});
+$('img').parent('a').addClass('no-border');
