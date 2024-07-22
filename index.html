@@ -1036,29 +1036,15 @@
 		<script>
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 			tg.expand(); //расширяем на все окно
-			// document.body.addEventListener("onload",()=>{
-				let styleTg = document.querySelector("#telegram-styles")
-				// console.log(styleTg, tg.themeParams)
-				let newstr = Object.entries(tg.themeParams).map(([key, value]) => `${key}: ${value}`).join('\n');
-				styleTg.innerHTML = `
-    				${tg.colorScheme}
+			
+			let tgStyle = document.querySelector("#telegram-styles")
+			let colorScheme = tg.colorScheme
+			let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`).join(';\n');
+			tgStyle.innerHTML = `
 				:root{
-    				${newstr}
+				${newstr}
 				}`
-				// ${tg.themeParams.bg_color 		 ? "--tg-theme-bg-color: " + tg.themeParams.bg_color : ""};
-    // 				${tg.themeParams.text_color 		 ? "--tg-theme-text-color: " + tg.themeParams.text_color : ""};
-				// ${tg.themeParams.hint_color 		 ? "--tg-theme-hint-color: " + tg.themeParams.hint_color : ""};
-    // 				${tg.themeParams.link_color 		 ? "--tg-theme-link-color: " + tg.themeParams.link_color : ""};
-				// ${tg.themeParams.button_color 		 ? "--tg-theme-button-color: " + tg.themeParams.button_color : ""};
-    // 				${tg.themeParams.button_text_colorString ? "--tg-theme-button-text-color: " + tg.themeParams.button_text_colorString : ""};}
-				// styleTg.innerHTML = `:root{
-				// --tg-theme-bg-color:${tg.ThemeParams.bg_color}
-				// --tg-theme-text-color:${tg.ThemeParams.text_color}
-				// --tg-theme-hint-color:${tg.ThemeParams.hint_color}
-				// --tg-theme-link-color:${tg.ThemeParams.link_color}
-				// --tg-theme-button-color:${tg.ThemeParams.button_color}
-				// --tg-theme-button-text-color:${tg.ThemeParams.button_text_colorString}}`
-			// })
+
 		</script>
 </body>
 </html>
