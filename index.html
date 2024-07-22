@@ -1039,10 +1039,16 @@
 			// document.body.addEventListener("onload",()=>{
 				console.log("asdfasdfasdfasdf")
 				styleTg = document.querySelector("#telegram-styles")
-				console.log(styleTg, tg.themeParams.themeParams)
-				styleTg.innerHTML = `:root{
-				--tg-theme-bg-color:${tg.backgroundColor}}
-				--tg-theme-bg-color:${tg.colorScheme}
+				console.log(styleTg, tg.themeParams)
+				styleTg.innerHTML = `
+    				${tg.colorScheme}
+				:root{
+				--tg-theme-bg-color:${tg.themeParams.bg_color};
+				--tg-theme-text-color:${tg.themeParams.text_color};
+				--tg-theme-hint-color:${tg.themeParams.hint_color};
+				--tg-theme-link-color:${tg.themeParams.link_color};
+				--tg-theme-button-color:${tg.themeParams.button_color};
+				--tg-theme-button-text-color:${tg.themeParams.button_text_colorString};}
     				`		
 				// styleTg.innerHTML = `:root{
 				// --tg-theme-bg-color:${tg.ThemeParams.bg_color}
