@@ -1037,7 +1037,7 @@
 		<script>
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 			tg.expand(); //расширяем на все окно
-			document.body.addEventListener("onload",()=>{
+			// document.body.addEventListener("onload",()=>{
 				console.log("asdfasdfasdfasdf")
 				styleTg = document.querySelector("#telegram-styles")
 				console.log(styleTg)
@@ -1048,6 +1048,6 @@
 				--tg-theme-link-color:{tg.ThemeParams.link_color}
 				--tg-theme-button-color:{tg.ThemeParams.button_color}
 				--tg-theme-button-text-color:{tg.ThemeParams.button_text_colorString}}`
-			})
+			// })
 		</script>
 </html>
