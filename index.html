@@ -38,6 +38,24 @@
 		</script>
 
 	<link id="dark-theme-css" rel="stylesheet" href="./РГУ СоцТех - Интранет _ Главная страница_files/dark-mode.css"></head>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+		<script>
+			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+			tg.expand(); //расширяем на все окно
+			document.body.addEventListener("onload",()=>{
+				console.log("asdfasdfasdfasdf")
+				styleTg = document.querySelector("#telegram-styles")
+				console.log(styleTg,tg.ThemeParams.bg_color)
+				styleTg.innerHTML = `:root{
+				--tg-theme-bg-color:${tg.ThemeParams.bg_color}
+				--tg-theme-text-color:${tg.ThemeParams.text_color}
+				--tg-theme-hint-color:${tg.ThemeParams.hint_color}
+				--tg-theme-link-color:${tg.ThemeParams.link_color}
+				--tg-theme-button-color:${tg.ThemeParams.button_color}
+				--tg-theme-button-text-color:${tg.ThemeParams.button_text_colorString}}`
+			})
+			
+		</script>
 	<body class="dark-mode">
 	
 	<!-- Wrapper -->
@@ -996,22 +1014,7 @@
 			}
 		</script>
 <!-- 		<div id="telegram-styles"></div> -->
-		<script src="https://telegram.org/js/telegram-web-app.js"></script>
-		<script>
-			console.log("asdfasdfasdfasdf")
-			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-			tg.expand(); //расширяем на все окно
-			styleTg = document.querySelector("#telegram-styles")
-			console.log(styleTg,tg.ThemeParams.bg_color)
-			styleTg.innerHTML = `:root{
-			--tg-theme-bg-color:${tg.ThemeParams.bg_color}
-			--tg-theme-text-color:${tg.ThemeParams.text_color}
-			--tg-theme-hint-color:${tg.ThemeParams.hint_color}
-			--tg-theme-link-color:${tg.ThemeParams.link_color}
-			--tg-theme-button-color:${tg.ThemeParams.button_color}
-			--tg-theme-button-text-color:${tg.ThemeParams.button_text_colorString}}`
-			
-		</script>
+		
 		
 				
 		
