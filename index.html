@@ -1039,6 +1039,7 @@
 			
 			let tgStyle = document.querySelector("#telegram-styles")
 			let colorScheme = tg.colorScheme
+			
 			let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`).join(';\n');
 			tgStyle.innerHTML = `
 				:root{
