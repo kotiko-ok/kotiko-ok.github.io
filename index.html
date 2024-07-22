@@ -995,10 +995,18 @@
 				initDialog(custom_room, puid, 0, null);
 			}
 		</script>
+		<style id="telegram-styles"></style>
 		<script src="https://telegram.org/js/telegram-web-app.js"></script>
 		<script>
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-			tg.expand(); //расширяем на все окно  
+			tg.expand(); //расширяем на все окно
+			document.querySelector("#telegram-styles").innerHTML = `:root{
+			--tg-theme-bg-color:${tg.ThemeParams.bg_color}
+			--tg-theme-text-color:${tg.ThemeParams.text_color}
+			--tg-theme-hint-color:${tg.ThemeParams.hint_color}
+			--tg-theme-link-color:${tg.ThemeParams.link_color}
+			--tg-theme-button-color:${tg.ThemeParams.button_color}
+			--tg-theme-button-text-color:${tg.ThemeParams.button_text_colorString}}`
 		</script>
 		
 				
