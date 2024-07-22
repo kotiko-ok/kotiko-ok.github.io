@@ -1041,8 +1041,9 @@
 				styleTg = document.querySelector("#telegram-styles")
 				console.log(styleTg, tg.themeParams)
 				styleTg.innerHTML = `:root{
-				--tg-theme-bg-color:${tg.backgroundColor}}`
-				--tg-theme-bg-color:${tg.colorScheme}			
+				--tg-theme-bg-color:${tg.backgroundColor}}
+				--tg-theme-bg-color:${tg.colorScheme}
+    				`		
 				// styleTg.innerHTML = `:root{
 				// --tg-theme-bg-color:${tg.ThemeParams.bg_color}
 				// --tg-theme-text-color:${tg.ThemeParams.text_color}
