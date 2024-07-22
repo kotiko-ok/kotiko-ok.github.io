@@ -1043,7 +1043,7 @@
 			let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`).join(';\n');
 			tgStyle.innerHTML = `
 				:root{
-				${newstr}
+				${tgColors}
 				}`
 
 		</script>
