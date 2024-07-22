@@ -1037,19 +1037,20 @@
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 			tg.expand(); //расширяем на все окно
 			// document.body.addEventListener("onload",()=>{
-				console.log("asdfasdfasdfasdf")
-				styleTg = document.querySelector("#telegram-styles")
-				console.log(styleTg, tg.themeParams)
+				let styleTg = document.querySelector("#telegram-styles")
+				// console.log(styleTg, tg.themeParams)
+				let newstr = Object.entries(tg.themeParams).map(([key, value]) => `${key}: ${value}`).join('\n');
 				styleTg.innerHTML = `
     				${tg.colorScheme}
 				:root{
-				--tg-theme-bg-color:${tg.themeParams.bg_color};
-				--tg-theme-text-color:${tg.themeParams.text_color};
-				--tg-theme-hint-color:${tg.themeParams.hint_color};
-				--tg-theme-link-color:${tg.themeParams.link_color};
-				--tg-theme-button-color:${tg.themeParams.button_color};
-				--tg-theme-button-text-color:${tg.themeParams.button_text_colorString};}
-    				`		
+    				${newstr}
+				}`
+				// ${tg.themeParams.bg_color 		 ? "--tg-theme-bg-color: " + tg.themeParams.bg_color : ""};
+    // 				${tg.themeParams.text_color 		 ? "--tg-theme-text-color: " + tg.themeParams.text_color : ""};
+				// ${tg.themeParams.hint_color 		 ? "--tg-theme-hint-color: " + tg.themeParams.hint_color : ""};
+    // 				${tg.themeParams.link_color 		 ? "--tg-theme-link-color: " + tg.themeParams.link_color : ""};
+				// ${tg.themeParams.button_color 		 ? "--tg-theme-button-color: " + tg.themeParams.button_color : ""};
+    // 				${tg.themeParams.button_text_colorString ? "--tg-theme-button-text-color: " + tg.themeParams.button_text_colorString : ""};}
 				// styleTg.innerHTML = `:root{
 				// --tg-theme-bg-color:${tg.ThemeParams.bg_color}
 				// --tg-theme-text-color:${tg.ThemeParams.text_color}
