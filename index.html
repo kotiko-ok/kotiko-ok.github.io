@@ -1341,18 +1341,23 @@
 		tg.expand(); //расширяем на все окно
 
 		let colorScheme = tg.colorScheme
+		console.log(tg.colorScheme)
 
-		let tgStyle = document.querySelector("#telegram-styles")
-		let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`);
+		if (document.body.classList.contains("dark-mode") && tg.colorScheme==""){
+
+		}
+
+		// let tgStyle = document.querySelector("#telegram-styles")
+		// let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`);
 		// tgStyle.innerHTML = `
 		// 	:root{
 		// 	${tgColors.join(';\n')}
 		// 	}`
 		// tgcolor
-		tgStyle.innerHTML = Object.entries(tg.themeParams).map(([key, value]) => {
-			let property = `--tg-theme-${key.replace(/_/g, '-')}`;
-			return `<div class="tgcolor" style="background-color: ${value}">${property}:${value}</div>`;
-		}).join('');
+		// tgStyle.innerHTML = Object.entries(tg.themeParams).map(([key, value]) => {
+		// 	let property = `--tg-theme-${key.replace(/_/g, '-')}`;
+		// 	return `<div class="tgcolor" style="background-color: ${value}">${property}:${value}</div>`;
+		// }).join('');
 
 	</script>
 

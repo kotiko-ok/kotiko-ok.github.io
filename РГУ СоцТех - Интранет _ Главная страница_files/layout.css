@@ -1,3 +1,32 @@
+:root {
+	/* --white-xz:#ffffff; */
+	--linck-color:
+...
+}
+
+
+:root {
+	--tg-theme-bg-color: #212121;
+	--tg-theme-button-color: #e56889;
+	--tg-theme-secondary-bg-color: #181818;
+	--tg-theme-header-bg-color: #212121;
+	--tg-theme-section-bg-color: #212121;
+
+	--tg-theme-link-color: #e56889;
+	--tg-theme-hint-color: #aaaaaa;
+
+	--tg-theme-button-text-color: #ffffff;
+	--tg-theme-text-color: #ffffff;
+	--tg-theme-subtitle-text-color: #aaaaaa;
+	--tg-theme-accent-text-color: #e56889;
+	--tg-theme-section-header-text-color: #e56889;
+	--tg-theme-destructive-text-color: #ff595a;
+}
+
+
+
+
+
 img {
 	margin: 0;
 	padding: 0;
@@ -144,7 +173,7 @@ select.input-sm {
 	/*margin-top:10px;*/
 	width: 190px;
 	float: right;
-	background: #FFF;
+	background: var(--white-xz);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -280,12 +309,12 @@ table tr:hover,
 .pagination a:hover {
 	background-color: #286090 !important;
 	border-color: #204d74;
-	color: #FFF !important;
+	color: var(--white-xz) !important;
 	text-decoration: none;
 }
 
 .unread_msgs_link {
-	background: url('/files/upload/pages/image/mail.png') no-repeat top left #FFF !important;
+	background: url('/files/upload/pages/image/mail.png') no-repeat top left var(--white-xz) !important;
 	font-size: 14px;
 	padding: 12px 0 10px 46px;
 	margin-top: -10px;
@@ -324,7 +353,7 @@ table tr:hover,
 }
 
 .user_notify_item {
-	background: #FFF;
+	background: var(--white-xz);
 	padding: 10px;
 	margin: 0 8px 6px 8px;
 	border: 1px solid #DDD;
@@ -487,14 +516,14 @@ table tr:hover,
 	top: 37px;
 	left: 0;
 	padding: 2px 9px 3px 10px;
-	background: none repeat scroll 0% 0% #FFF;
+	background: none repeat scroll 0% 0% var(--white-xz);
 	width: 190px;
 	color: #F00;
 }
 
 .sbs_posts_count {
 	background: #337ab7;
-	color: #FFF !important;
+	color: var(--white-xz) !important;
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
@@ -508,7 +537,7 @@ table tr:hover,
 
 .msg_unread_count {
 	background: #337ab7;
-	color: #FFF !important;
+	color: var(--white-xz) !important;
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
@@ -531,7 +560,7 @@ table tr:hover,
 
 .events_history_counter_class {
 	background: #337ab7;
-	color: #FFF !important;
+	color: var(--white-xz) !important;
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
@@ -556,7 +585,7 @@ table tr:hover,
 
 .msg_unread_count_menu {
 	background: #337ab7;
-	color: #FFF !important;
+	color: var(--white-xz) !important;
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
@@ -678,7 +707,7 @@ table tr:hover,
 
 .post_wrap_single {
 	/*padding:15px 25px;
-	background:#FFF;
+	background:var(--white-xz);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -708,7 +737,7 @@ table tr:hover,
 	padding:20px;*/
 	/*margin-bottom:12px;*/
 	/*color:black;
-	background:#FFF;
+	background:var(--white-xz);
 	-webkit-border-radius: 10px;
 	-webkit-border-bottom-left-radius: 0;
 	-moz-border-radius: 10px;
@@ -724,7 +753,7 @@ table tr:hover,
 
 .total_post_comments {
 	background: #337ab7;
-	color: #FFF !important;
+	color: var(--white-xz) !important;
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
@@ -746,7 +775,7 @@ table tr:hover,
 }
 
 .post_actions {
-	background: #FFF;
+	background: var(--white-xz);
 	width: 280px;
 	padding: 10px;
 	-webkit-border-bottom-right-radius: 10px;
@@ -1015,7 +1044,7 @@ overcalitm_wraper {
 	bottom: -185px;
 	width: 245px;
 	right: -1px;
-	background: #FFF;
+	background: var(--white-xz);
 	padding: 4px;
 	border: 2px solid #CCC;
 	z-index: 9999;
@@ -1034,7 +1063,7 @@ overcalitm_wraper {
 	margin: 0 0.8em 1em 0.8em;
 	width: 8em;
 	height: 12em;
-	background: #FFF;
+	background: var(--white-xz);
 	/*padding: 0.5em;*/
 }
 
@@ -1102,7 +1131,7 @@ overcalitm_wraper {
 }
 
 .user_type_info_txt {
-	background: #FFF;
+	background: var(--white-xz);
 	position: absolute;
 	padding: 6px;
 	top: 42px;
@@ -1181,7 +1210,7 @@ overcalitm_wraper {
 
 .profile_actions a {
 	text-decoration: none;
-	color: #FFF;
+	color: var(--white-xz);
 	margin: 0 0.5em 0.5em 0;
 	padding: 0.5em;
 	border: 0;
@@ -1220,7 +1249,7 @@ overcalitm_wraper {
 
 .profile_data {
 	width: calc(77% - 2em);
-	background: #FFF;
+	background: var(--white-xz);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -1396,7 +1425,7 @@ overcalitm_wraper {
 
 .msg_nav {
 	height: auto;
-	background: #FFF;
+	background: var(--white-xz);
 }
 
 .unblock_user {
@@ -1873,7 +1902,7 @@ overcalitm_wraper {
 }
 
 .single_msg_wrap {
-	background: #FFF;
+	background: var(--white-xz);
 	padding: 10px;
 	position: relative;
 	margin-top: 15px;
@@ -1892,7 +1921,7 @@ overcalitm_wraper {
 /*-------------profile data edit-----------*/
 
 .profile_section {
-	background: #FFF;
+	background: var(--white-xz);
 	padding: 0;
 	margin-bottom: 0;
 	-webkit-border-radius: 10px;
