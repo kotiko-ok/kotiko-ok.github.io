@@ -1343,7 +1343,7 @@
 		let colorScheme = tg.colorScheme
 		console.log(document.body.classList.contains("dark-mode") , tg.colorScheme=="dark", document.body.classList.contains("dark-mode") ^ tg.colorScheme=="dark")
 		
-		if (document.body.classList.contains("dark-mode") ^ tg.colorScheme=="dark"){
+		if (document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark"){
 			document.querySelector("#dark-theme-slider").click()
 		}
 
