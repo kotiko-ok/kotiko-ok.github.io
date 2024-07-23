@@ -903,8 +903,9 @@
 
 			<!-- Pagination -->
 				<ul class="actions pagination_cust">
-					<li><a href="https://portal.rgust.ru/posts?type=1" class="button big next">Архив новостей <div id="telegram-styles"></div></a></li>
+					<li><a href="https://portal.rgust.ru/posts?type=1" class="button big next">Архив новостей </a></li>
 				</ul>
+				<div id="telegram-styles"></div>
 
 			</div>
 
@@ -1031,20 +1032,39 @@
 	<!-- /Yandex.Metrika counter -->
 		
 
-	
+		<style>
+		.tgcolor{
+/* 		display: flex;
+	    	justify-content: center;
+	    	align-items: center;
+	    	align-content: center; */
+
+	    	padding: 10px;
+	    	margin: 5px;
+	    	color: #fff; /* Или другой цвет текста, подходящий для вашего фона */
+	    	border: 1px solid #ccc; /* Или другой стиль границы */
+		
+		}
+		
+		</style>
 		<script src="https://telegram.org/js/telegram-web-app.js"></script>
 		<script>
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 			tg.expand(); //расширяем на все окно
 			
-			let tgStyle = document.querySelector("#telegram-styles")
 			let colorScheme = tg.colorScheme
 			
-			let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`).join(';\n');
-			tgStyle.innerHTML = `
-				:root{
-				${tgColors}
-				}`
+			let tgStyle = document.querySelector("#telegram-styles")
+			let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`);
+			// tgStyle.innerHTML = `
+			// 	:root{
+			// 	${tgColors.join(';\n')}
+			// 	}`
+			// tgcolor
+			tgStyle.innerHTML = Object.entries(tg.themeParams).map(([key, value]) => {
+			    let property = `--tg-theme-${key.replace(/_/g, '-')}`;
+			    return `<div class="tgcolor" style="background-color: ${value}">${property}:${value}</div>`;
+			}).join('');
 
 		</script>
 </body>
