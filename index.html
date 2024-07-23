@@ -1340,8 +1340,8 @@
 		let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 		tg.expand(); //расширяем на все окно
 
-		let colorScheme = tg.colorScheme
-		console.log(document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')), tg.colorScheme=="dark", document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark")
+		// let colorScheme = tg.colorScheme
+		// console.log(document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')), tg.colorScheme=="dark", document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark")
 		
 		if (document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark"){
 			document.querySelector("#dark-theme-slider").click()
