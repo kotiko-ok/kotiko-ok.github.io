@@ -1343,8 +1343,8 @@
 		let colorScheme = tg.colorScheme
 		console.log(tg.colorScheme)
 
-		if (document.body.classList.contains("dark-mode") && tg.colorScheme==""){
-
+		if (document.body.classList.contains("dark-mode") ^ tg.colorScheme=="dark"){
+			document.querySelector("#dark-theme-slider").click()
 		}
 
 		// let tgStyle = document.querySelector("#telegram-styles")
