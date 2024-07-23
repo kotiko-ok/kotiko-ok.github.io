@@ -1,24 +1,14 @@
-
-:root{
-	--background-color-black:  #121212;
-	--color-white: #fff;
-	--color-blue: #52abf7;
-	--color-gray:  #9c9c9c;
-
-
-}
-
 body,
 .uid_spr_wrap_style {
-	background-color: var(--background-color-black) !important;
-	color: var(--color-white);
+	background-color: #121212 !important;
+	color: #fff;
 }
 
 #main a,
 .main_content a,
 .calend_sub_hrefs,
 .eds_wraper a {
-	color: var(--color-blue);
+	color: #52abf7;
 }
 
 .dialog_act_area .col-md-1 span,
@@ -32,11 +22,11 @@ body,
 .forward-msg-action-btn,
 .remove-msg-action-btn,
 .mobileReturnToUmList {
-	color: var(--color-blue) !important;
+	color: #52abf7 !important;
 }
 
 .mobileReturnToUmList {
-	border-color: var(--color-blue) !important;
+	border-color: #52abf7 !important;
 }
 
 h1,
@@ -45,7 +35,7 @@ h3:not(.schedule_event),
 h4,
 h5,
 h6 {
-	color: var(--color-gray) !important;
+	color: #9c9c9c !important;
 }
 
 label,
@@ -75,7 +65,7 @@ select.cke_dialog_ui_input_select,
 select.cke_dialog_ui_input_select option,
 #useristyping,
 #useristyping span {
-	color: var(--color-white) !important;
+	color: #fff !important;
 	text-shadow: none !important;
 }
 
@@ -226,7 +216,7 @@ a.cke_dialog_tab,
 .schedule_stuff_tr_composed,
 .index_data_for_current_position {
 	background-color: rgba(255, 255, 255, 0.2) !important;
-	color: var(--color-white) !important;
+	color: #fff !important;
 }
 
 table tr:hover,
@@ -278,7 +268,7 @@ textarea,
 .btn-default:hover #umrform h2,
 select.cke_dialog_ui_input_select {
 	background-color: rgba(255, 255, 255, 0.12) !important;
-	color: var(--color-white) !important;
+	color: #fff !important;
 }
 
 .custom_room_comment_wrapper,
@@ -650,7 +640,7 @@ a.cke_specialchar:active,
 
 a.cke_path_item,
 span.cke_path_empty {
-	color: var(--color-white) !important;	
+	color: #fff !important;	
 }
 
 .cke_reset {

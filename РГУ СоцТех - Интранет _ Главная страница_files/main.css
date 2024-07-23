@@ -4009,14 +4009,20 @@ body.single #wrapper {
 	max-width: 350px;
 }
 
+#intro header h1,
 #intro header h2 {
 	font-size: 2em;
 	font-weight: 900;
 	margin-bottom: 0;
 }
 
+#intro header h1 {
+	font-size: 2.5em;	
+}
+
 #intro header p {
 	font-size: 0.8em;
+	margin-bottom: 0.35em;
 }
 
 #intro .ies-app-links-container {
@@ -4061,7 +4067,7 @@ body.single #wrapper {
 		margin-bottom: 0;
 	}
 	#intro header h2 {
-		font-size: 1.25em;
+		font-size: 1.7em;
 	}
 	#intro header> :last-child {
 		margin-bottom: 0;

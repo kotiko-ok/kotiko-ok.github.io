@@ -1147,7 +1147,7 @@ overcalitm_wraper {
 		margin-right: -1.5em;
 		height: 41px;
 		overflow: hidden;
-		margin-bottom: 0.7em;
+		margin-bottom: 0.57em;
 	}
 	.profile_actions_flow::before {
 		content: '';
@@ -1628,6 +1628,10 @@ overcalitm_wraper {
 	font-weight: 300;
 	line-height: 1.5em;
 	margin-bottom: 12px;
+}
+
+.profile_data #user_right_info_and_actions_wrap:not(:has(.user_actions_btn)) p {
+	margin-bottom: 0;
 }
 
 .profile_data #snres > p {
