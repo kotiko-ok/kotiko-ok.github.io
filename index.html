@@ -1337,8 +1337,20 @@
 	</style>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
+		// let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+		// tg.expand(); //расширяем на все окно
 		let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-		tg.expand(); //расширяем на все окно
+		if (tg && window.Telegram.WebView.isIframe){проверяем открыт ли сайт через телеграмм
+		        tg.expand(); //расширяем на все окно
+		
+		        theme = tg.colorScheme
+		        hash = "switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
+		
+		        if (location.hash != hash){
+		            location.hash = hash
+		            location.reload()
+		        }
+		    }
 
 		// let colorScheme = tg.colorScheme
 		// console.log(document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')), tg.colorScheme=="dark", document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark")
@@ -1346,7 +1358,7 @@
 		// if (document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark"){
 		// 	document.querySelector("#dark-theme-slider").click()
 		// }
-		console.log(window.Telegram)
+		// console.log(window.Telegram)
 		// let tgStyle = document.querySelector("#telegram-styles")
 		// let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`);
 		// tgStyle.innerHTML = `
