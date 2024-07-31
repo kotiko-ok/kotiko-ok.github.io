@@ -5,38 +5,38 @@
     		<title>Redirect</title>
 		<script src="https://telegram.org/js/telegram-web-app.js"></script>
 		<script>
-		(function() {
-			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-			tg.expand(); //расширяем на все окно
+		// (function() {
+		// 	let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+		// 	tg.expand(); //расширяем на все окно
 	
-			theme = tg.colorScheme
-			// site = "https://portal.rgust.ru/"
-			hash = "#switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
-			// location = site + hash
-			// Получаем параметры из URL
-			const params = new URLSearchParams(window.location.search);
-			// Получаем значение параметра 's'
-			const targetSite = params.get('s');
-			// Проверяем, что параметр 's' не пустой и является корректным URL
-			if (targetSite) {
-				try {
-					const decodedTargetSite = decodeURIComponent(targetSite);
-					const url = new URL(decodedTargetSite);
-					// Перенаправляем пользователя на сайт из параметра 's'
-					consple.log(url+s)
-					// location.href = url+s;
-				} catch (e) {
-					console.error("Invalid URL:", targetSite);
-					// Если параметр 's' некорректный, перенаправляем на сайт по умолчанию
-					consple.log("https://portal.rgust.ru/" + hash)
-					// location.href = "https://portal.rgust.ru/" + hash;
-				}
-			} else {
-				// Если параметр 's' пустой, перенаправляем на сайт по умолчанию
-				consple.log("https://portal.rgust.ru/" + hash)
-				// location.href = "https://portal.rgust.ru/" + hash;
-			}
-		})();
+		// 	theme = tg.colorScheme
+		// 	// site = "https://portal.rgust.ru/"
+		// 	hash = "#switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
+		// 	// location = site + hash
+		// 	// Получаем параметры из URL
+		// 	const params = new URLSearchParams(window.location.search);
+		// 	// Получаем значение параметра 's'
+		// 	const targetSite = params.get('s');
+		// 	// Проверяем, что параметр 's' не пустой и является корректным URL
+		// 	if (targetSite) {
+		// 		try {
+		// 			const decodedTargetSite = decodeURIComponent(targetSite);
+		// 			const url = new URL(decodedTargetSite);
+		// 			// Перенаправляем пользователя на сайт из параметра 's'
+		// 			consple.log(url+s)
+		// 			// location.href = url+s;
+		// 		} catch (e) {
+		// 			console.error("Invalid URL:", targetSite);
+		// 			// Если параметр 's' некорректный, перенаправляем на сайт по умолчанию
+		// 			consple.log("https://portal.rgust.ru/" + hash)
+		// 			// location.href = "https://portal.rgust.ru/" + hash;
+		// 		}
+		// 	} else {
+		// 		// Если параметр 's' пустой, перенаправляем на сайт по умолчанию
+		// 		consple.log("https://portal.rgust.ru/" + hash)
+		// 		// location.href = "https://portal.rgust.ru/" + hash;
+		// 	}
+		// })();
 		</script>
 	</head>
 	<body>
