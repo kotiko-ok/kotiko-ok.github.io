@@ -23,15 +23,18 @@
 					const decodedTargetSite = decodeURIComponent(targetSite);
 					const url = new URL(decodedTargetSite);
 					// Перенаправляем пользователя на сайт из параметра 's'
-					location.href = url+s;
+					consple.log(url+s)
+					// location.href = url+s;
 				} catch (e) {
 					console.error("Invalid URL:", targetSite);
 					// Если параметр 's' некорректный, перенаправляем на сайт по умолчанию
-					location.href = "https://portal.rgust.ru/" + hash;
+					consple.log("https://portal.rgust.ru/" + hash)
+					// location.href = "https://portal.rgust.ru/" + hash;
 				}
 			} else {
 				// Если параметр 's' пустой, перенаправляем на сайт по умолчанию
-				location.href = "https://portal.rgust.ru/" + hash;
+				consple.log("https://portal.rgust.ru/" + hash)
+				// location.href = "https://portal.rgust.ru/" + hash;
 			}
 		})();
 		</script>
