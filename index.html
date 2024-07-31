@@ -23,17 +23,20 @@
 					const decodedTargetSite = decodeURIComponent(targetSite);
 					const url = new URL(decodedTargetSite);
 					// Перенаправляем пользователя на сайт из параметра 's'
-					consple.log(url+s)
+					alert(url+s)
+					// consple.log(url+s)
 					// location.href = url+s;
 				} catch (e) {
-					console.error("Invalid URL:", targetSite);
+					alert("https://portal.rgust.ru/" + hash)
+					// console.error("Invalid URL:", targetSite);
 					// Если параметр 's' некорректный, перенаправляем на сайт по умолчанию
-					consple.log("https://portal.rgust.ru/" + hash)
+					// consple.log("https://portal.rgust.ru/" + hash)
 					// location.href = "https://portal.rgust.ru/" + hash;
 				}
 			} else {
+				alert("sdfsdf", "https://portal.rgust.ru/" + hash)
 				// Если параметр 's' пустой, перенаправляем на сайт по умолчанию
-				consple.log("https://portal.rgust.ru/" + hash)
+				// consple.log("https://portal.rgust.ru/" + hash)
 				// location.href = "https://portal.rgust.ru/" + hash;
 			}
 		})();
