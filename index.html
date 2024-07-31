@@ -19,10 +19,10 @@
 			const targetSite = params.get('s');
 			// Проверяем, что параметр 's' не пустой и является корректным URL
 			if (targetSite) {
-				try location.href = decodeURIComponent(targetSite) + hash;
-				catch (e) location.href = "https://portal.rgust.ru/" + hash;
+				try {window.location.href = decodeURIComponent(targetSite) + hash;}
+				catch (e) {window.location.href = "https://portal.rgust.ru/" + hash;}
 				
-			} else location.href = "https://portal.rgust.ru/" + hash;
+			} else window.location.href = "https://portal.rgust.ru/" + hash;
 			
 		})();
 		</script>
