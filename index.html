@@ -22,12 +22,13 @@
 				try {
 					const decodedTargetSite = decodeURIComponent(targetSite);
 					const url = new URL(decodedTargetSite);
+					console.log(decodedTargetSite)
 					// Перенаправляем пользователя на сайт из параметра 's'
 					alert(url+s)
 					// consple.log(url+s)
 					// location.href = url+s;
 				} catch (e) {
-					alert("https://portal.rgust.ru/" + hash)
+					alert("...https://portal.rgust.ru/" + hash)
 					// console.error("Invalid URL:", targetSite);
 					// Если параметр 's' некорректный, перенаправляем на сайт по умолчанию
 					// consple.log("https://portal.rgust.ru/" + hash)
