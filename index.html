@@ -9,9 +9,9 @@
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 			tg.expand(); //расширяем на все окно
 	
-			theme = tg.colorScheme
+			let theme = tg.colorScheme
 			// site = "https://portal.rgust.ru/"
-			hash = "#switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
+			let hash = "#switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
 			// location = site + hash
 			// Получаем параметры из URL
 			const params = new URLSearchParams(window.location.search);
