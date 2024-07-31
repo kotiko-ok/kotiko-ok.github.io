@@ -21,10 +21,10 @@
 			if (targetSite) {
 				try {
 					const decodedTargetSite = decodeURIComponent(targetSite);
-					const url = new URL(decodedTargetSite);
+					// const url = new URL(decodedTargetSite);
 					console.log(decodedTargetSite)
 					// Перенаправляем пользователя на сайт из параметра 's'
-					alert(url+s)
+					alert(decodedTargetSite + hash)
 					// consple.log(url+s)
 					// location.href = url+s;
 				} catch (e) {
