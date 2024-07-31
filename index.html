@@ -1,59 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="ru">
+	<head>
+		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+		<script>
+			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+			tg.expand(); //расширяем на все окно
 
-<head>
-	
-
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
-	<script>
-		// let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-		// tg.expand(); //расширяем на все окно
-		let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-		tg.expand(); //расширяем на все окно
-
-		theme = tg.colorScheme
-		site = "https://portal.rgust.ru/"
-		hash = "#switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
-		location = site + hash
-		// if (tg && tg.isIframe){//проверяем открыт ли сайт через телеграмм
-		//         tg.expand(); //расширяем на все окно
-		
-		//         theme = tg.colorScheme
-		//         hash = "switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
-		
-		//         if (location.hash != hash){
-		//             location.hash = hash
-		//             location.reload()
-		//         }
-		//     }
-
-		// let colorScheme = tg.colorScheme
-		// console.log(document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')), tg.colorScheme=="dark", document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark")
-		
-		// if (document.cookie.split('; ').some(cookie => cookie.startsWith('ies-theme-mode=')) ^ tg.colorScheme=="dark"){
-		// 	document.querySelector("#dark-theme-slider").click()
-		// }
-		// console.log(window.Telegram)
-		// let tgStyle = document.querySelector("#telegram-styles")
-		// let tgColors = Object.entries(tg.themeParams).map(([key, value]) => `--tg-theme-${key.replace(/_/g, '-')}: ${value}`);
-		// tgStyle.innerHTML = `
-		// 	:root{
-		// 	${tgColors.join(';\n')}
-		// 	}`
-		// tgcolor
-		// tgStyle.innerHTML = Object.entries(tg.themeParams).map(([key, value]) => {
-		// 	let property = `--tg-theme-${key.replace(/_/g, '-')}`;
-		// 	return `<div class="tgcolor" style="background-color: ${value}">${property}:${value}</div>`;
-		// }).join('');
-
-	</script>
-</head>
-
-<body class="dark-mode">
-
-
-
-</body>
-
+			theme = tg.colorScheme
+			site = "https://portal.rgust.ru/"
+			hash = "#switchSiteThemeMode" + theme.charAt(0).toUpperCase() + theme.slice(1)
+			location = site + hash
+		</script>
+	</head>
+	<body>
+	</body>
 </html>
