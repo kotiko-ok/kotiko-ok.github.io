@@ -19,27 +19,11 @@
 			const targetSite = params.get('s');
 			// Проверяем, что параметр 's' не пустой и является корректным URL
 			if (targetSite) {
-				try {
-					const decodedTargetSite = decodeURIComponent(targetSite);
-					// const url = new URL(decodedTargetSite);
-					console.log(decodedTargetSite)
-					// Перенаправляем пользователя на сайт из параметра 's'
-					alert(decodedTargetSite + hash)
-					// consple.log(url+s)
-					// location.href = url+s;
-				} catch (e) {
-					alert("...https://portal.rgust.ru/" + hash)
-					// console.error("Invalid URL:", targetSite);
-					// Если параметр 's' некорректный, перенаправляем на сайт по умолчанию
-					// consple.log("https://portal.rgust.ru/" + hash)
-					// location.href = "https://portal.rgust.ru/" + hash;
-				}
-			} else {
-				alert("sdfsdf", "https://portal.rgust.ru/" + hash)
-				// Если параметр 's' пустой, перенаправляем на сайт по умолчанию
-				// consple.log("https://portal.rgust.ru/" + hash)
-				// location.href = "https://portal.rgust.ru/" + hash;
-			}
+				try location.href = decodeURIComponent(targetSite) + hash;
+				catch (e) location.href = "https://portal.rgust.ru/" + hash;
+				
+			} else location.href = "https://portal.rgust.ru/" + hash;
+			
 		})();
 		</script>
 	</head>
